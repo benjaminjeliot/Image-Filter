@@ -1,0 +1,7 @@
+[
+  { "include": ["<boost/log/core/record.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
+  { "include": ["<boost/log/sources/record_ostream.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
+  { "include": ["<boost/preprocessor/seq/enum.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
+  { "include": ["<boost/preprocessor/seq/size.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
+  { "include": ["\"gtest/gtest.h\"", "private", "<gtest/gtest.h>", "public"] },
+]
