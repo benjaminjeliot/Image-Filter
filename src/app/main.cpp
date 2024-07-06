@@ -29,13 +29,13 @@ auto main(int argc, char *argv[]) -> int {
   constexpr double value_1{4.5};
   constexpr double value_4{8.2};
 
-  auto node_0{std::make_shared<imgf::ScalarDoubleNode>(value_0)};
-  auto node_1{std::make_shared<imgf::ScalarDoubleNode>(value_1)};
-  auto node_2{std::make_shared<imgf::ScalarDoubleAddNode>()};
-  auto node_3{std::make_shared<imgf::ScalarDoubleNode>()};
-  auto node_4{std::make_shared<imgf::ScalarDoubleNode>(value_4)};
-  auto node_5{std::make_shared<imgf::ScalarDoubleAddNode>()};
-  auto node_6{std::make_shared<imgf::ScalarDoubleAddNode>()};
+  auto node_0{std::make_shared<imgf::ScalarDoubleNode>("node_0", value_0)};
+  auto node_1{std::make_shared<imgf::ScalarDoubleNode>("node_1", value_1)};
+  auto node_2{std::make_shared<imgf::ScalarDoubleAddNode>("node_2")};
+  auto node_3{std::make_shared<imgf::ScalarDoubleNode>("node_3")};
+  auto node_4{std::make_shared<imgf::ScalarDoubleNode>("node_4", value_4)};
+  auto node_5{std::make_shared<imgf::ScalarDoubleAddNode>("node_5")};
+  auto node_6{std::make_shared<imgf::ScalarDoubleAddNode>("node_6")};
 
   node_2->GetInputPort(0)->Attach(node_0->GetOutputPort(0));
   node_2->GetInputPort(1)->Attach(node_1->GetOutputPort(0));
@@ -56,10 +56,11 @@ auto main(int argc, char *argv[]) -> int {
 
   for (auto &node : node_list) {
     std::cout << "Node" << std::endl;
+    std::cout << "Name: " << node->GetName() << std::endl;
     std::cout << "Number of input ports: " << node->GetNumberOfInputPorts()
               << std::endl;
     std::cout << "Input ports:" << std::endl;
-    for (int32_t i{0}; i < node->GetNumberOfInputPorts(); ++i) {
+    for (std::int32_t i{0}; i < node->GetNumberOfInputPorts(); ++i) {
       auto input_port = node->GetInputPort(i);
       std::cout << "Input port " << i
                 << " data type name: " << input_port->GetDataTypeName()
@@ -69,7 +70,7 @@ auto main(int argc, char *argv[]) -> int {
     std::cout << "Number of output ports: " << node->GetNumberOfOutputPorts()
               << std::endl;
     std::cout << "Output ports:" << std::endl;
-    for (int32_t i{0}; i < node->GetNumberOfOutputPorts(); ++i) {
+    for (std::int32_t i{0}; i < node->GetNumberOfOutputPorts(); ++i) {
       auto output_port = node->GetOutputPort(i);
       std::cout << "Output port " << i
                 << " data type name: " << output_port->GetDataTypeName()

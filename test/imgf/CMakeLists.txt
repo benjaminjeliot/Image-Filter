@@ -1,7 +1,7 @@
 # Copyright (c) 2024 Jim Eliot
 
 add_executable(test-runner InputPortTest.cpp OutputPortTest.cpp
-                           ScalarDoubleAddNodeTest.cpp)
+                           ScalarDoubleAddNodeTest.cpp ScalarDoubleNodeTest.cpp)
 
 target_compile_features(test-runner PRIVATE cxx_std_17)
 

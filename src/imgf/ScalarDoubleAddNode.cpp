@@ -13,11 +13,13 @@
 
 namespace imgf {
 
+const std::string ScalarDoubleAddNode::type_name_{"ScalarDoubleAddNode"};
+
 ScalarDoubleAddNode::~ScalarDoubleAddNode() {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::~ScalarDoubleAddNode()";
 }
 
-ScalarDoubleAddNode::ScalarDoubleAddNode() {
+ScalarDoubleAddNode::ScalarDoubleAddNode(std::string name) : Node(name) {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::ScalarDoubleAddNode()";
 
   // Initialize ports
@@ -29,19 +31,25 @@ ScalarDoubleAddNode::ScalarDoubleAddNode() {
   data_object_ = std::make_shared<imgf::ScalarDouble>(0.0);
 }
 
-auto ScalarDoubleAddNode::GetNumberOfInputPorts() const -> int32_t {
+auto ScalarDoubleAddNode::GetType() const -> std::string {
+  BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::GetType()";
+
+  return type_name_;
+}
+
+auto ScalarDoubleAddNode::GetNumberOfInputPorts() const -> std::int32_t {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::GetNumberOfInputPorts()";
 
   return INT32_C(2);
 }
 
-auto ScalarDoubleAddNode::GetNumberOfOutputPorts() const -> int32_t {
+auto ScalarDoubleAddNode::GetNumberOfOutputPorts() const -> std::int32_t {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::GetNumberOfOutputPorts()";
 
   return INT32_C(1);
 }
 
-auto ScalarDoubleAddNode::GetInputPort(int32_t index)
+auto ScalarDoubleAddNode::GetInputPort(std::int32_t index)
     -> std::shared_ptr<imgf::InputPort> {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::GetInputPort()";
 
@@ -61,7 +69,7 @@ auto ScalarDoubleAddNode::GetInputPort(int32_t index)
   return nullptr;
 }
 
-auto ScalarDoubleAddNode::GetOutputPort(int32_t index)
+auto ScalarDoubleAddNode::GetOutputPort(std::int32_t index)
     -> std::shared_ptr<imgf::OutputPort> {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleAddNode::GetOutputPort()";
 
