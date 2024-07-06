@@ -22,25 +22,32 @@ class ScalarDoubleNode : public Node {
   ~ScalarDoubleNode() override;
 
   //! brief Constructor.
-  ScalarDoubleNode();
+  //!
+  //! \param name The name of the node.
+  ScalarDoubleNode(std::string name);
 
   //! \brief Constructor.
   //!
+  //! \param name The name of the node.
   //! \param value The value of the scalar.
-  explicit ScalarDoubleNode(double value);
+  explicit ScalarDoubleNode(std::string name, double value);
 
-  auto GetNumberOfInputPorts() const -> int32_t override;
+  auto GetType() const -> std::string override;
 
-  auto GetNumberOfOutputPorts() const -> int32_t override;
+  auto GetNumberOfInputPorts() const -> std::int32_t override;
 
-  auto GetInputPort(int32_t index) -> std::shared_ptr<imgf::InputPort> override;
+  auto GetNumberOfOutputPorts() const -> std::int32_t override;
 
-  auto GetOutputPort(int32_t index)
+  auto GetInputPort(std::int32_t index)
+      -> std::shared_ptr<imgf::InputPort> override;
+
+  auto GetOutputPort(std::int32_t index)
       -> std::shared_ptr<imgf::OutputPort> override;
 
   auto Execute() -> void override;
 
  private:
+  static const std::string type_name_;
   std::shared_ptr<imgf::ScalarDoubleOutputPort> output_port_0_{nullptr};
   std::shared_ptr<imgf::ScalarDouble> data_object_{nullptr};
 };

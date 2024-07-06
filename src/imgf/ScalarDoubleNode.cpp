@@ -11,11 +11,13 @@
 
 namespace imgf {
 
+const std::string ScalarDoubleNode::type_name_{"ScalarDoubleNode"};
+
 ScalarDoubleNode::~ScalarDoubleNode() {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::~ScalarDoubleNode()";
 }
 
-ScalarDoubleNode::ScalarDoubleNode() {
+ScalarDoubleNode::ScalarDoubleNode(std::string name) : Node(name) {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::ScalarDoubleNode()";
 
   // Initialize ports
@@ -25,7 +27,8 @@ ScalarDoubleNode::ScalarDoubleNode() {
   data_object_ = std::make_shared<imgf::ScalarDouble>(0.0);
 }
 
-ScalarDoubleNode::ScalarDoubleNode(double value) {
+ScalarDoubleNode::ScalarDoubleNode(std::string name, double value)
+    : Node(name) {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::ScalarDoubleNode()";
 
   // Initialize ports
@@ -35,19 +38,25 @@ ScalarDoubleNode::ScalarDoubleNode(double value) {
   data_object_ = std::make_shared<imgf::ScalarDouble>(value);
 }
 
-auto ScalarDoubleNode::GetNumberOfInputPorts() const -> int32_t {
+auto ScalarDoubleNode::GetType() const -> std::string {
+  BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::GetType()";
+
+  return type_name_;
+}
+
+auto ScalarDoubleNode::GetNumberOfInputPorts() const -> std::int32_t {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::GetNumberOfInputPorts()";
 
   return INT32_C(0);
 }
 
-auto ScalarDoubleNode::GetNumberOfOutputPorts() const -> int32_t {
+auto ScalarDoubleNode::GetNumberOfOutputPorts() const -> std::int32_t {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::GetNumberOfOutputPorts()";
 
   return INT32_C(1);
 }
 
-auto ScalarDoubleNode::GetInputPort(int32_t index)
+auto ScalarDoubleNode::GetInputPort(std::int32_t index)
     -> std::shared_ptr<imgf::InputPort> {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::GetInputPort()";
 
@@ -55,7 +64,7 @@ auto ScalarDoubleNode::GetInputPort(int32_t index)
   return nullptr;
 }
 
-auto ScalarDoubleNode::GetOutputPort(int32_t index)
+auto ScalarDoubleNode::GetOutputPort(std::int32_t index)
     -> std::shared_ptr<imgf::OutputPort> {
   BOOST_LOG_TRIVIAL(trace) << "ScalarDoubleNode::GetOutputPort()";
 

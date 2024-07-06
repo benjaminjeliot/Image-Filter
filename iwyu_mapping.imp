@@ -3,5 +3,6 @@
   { "include": ["<boost/log/sources/record_ostream.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
   { "include": ["<boost/preprocessor/seq/enum.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
   { "include": ["<boost/preprocessor/seq/size.hpp>", "private", "<boost/log/trivial.hpp>", "public"] },
+  { "include": ["<boost/log/core/core.hpp>", "private", "<boost/log/core.hpp>", "public"] },
   { "include": ["\"gtest/gtest.h\"", "private", "<gtest/gtest.h>", "public"] },
 ]
