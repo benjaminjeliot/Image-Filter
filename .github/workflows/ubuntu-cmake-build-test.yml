@@ -22,7 +22,7 @@ jobs:
 
     - name: Configure CMake
       # Configure CMake project
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DENABLE_TEST:BOOL=ON
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DENABLE_UNIT_TESTS:BOOL=ON -DENABLE_DOCUMENTATION:BOOL=ON
 
     - name: Build
       # Build CMake project
